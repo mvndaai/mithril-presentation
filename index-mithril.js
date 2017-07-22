@@ -1,21 +1,24 @@
-var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/forecast?zip=84062&appid=74afd8b2438530184bb3e4f0df71d1f1';
+
+var name = '';
+var list = [];
 
 var component = {
-    name: 'a',
-    list: ['a','b','c'],
     oninit: (vnode) => {
         m.request(weatherApiUrl).then((r) => {
-            vnode.state.list = r.list;
-            vnode.state.name = r.city.name;
-            console.log(r);
+            name = r.city.name;
+            list = r.list;
+            console.log('mith', r);
+            console.log(name);
+            m.redraw();
         });
     },
-    onchange: (vnode) => console.log(vnode.state.name),
+    onchange: (vnode) => console.log("changing"),
     view: (vnode) => [
         m('h1.subtitle', 'Mithril'),
-        JSON.stringify(vnode.state),
-        m('', vnode.state.name),
-        vnode.state.list.map((e) => JSON.stringify(e))
+        m('', name),
+        list.map(
+            (e) => JSON.stringify(e)
+        )
     ]
 };
 
