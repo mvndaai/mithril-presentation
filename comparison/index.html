@@ -16,14 +16,14 @@
 
     <body>
         <h1 class='title' style="text-align:center;">Comparisons</h1>
-        <div class="columns">
+        <div class="columns" style="padding: 10px;">
             <div id="mithril" class="column card"></div>
-            <div id="react" class="column card">React</div>
+            <div id="react" class="column card"></div>
             <div ng-app='ang' ng-controller="angController" class="column card">
                 <div class='subtitle'>Angular</div>
                 <div>{{name}}</div>
-                <div ng-repeat="e in list">
-                    {{e.dt_txt}} - {{e.weather[0].description}} - {{e.main.temp}}
+                <div ng-repeat="e in r.data">
+                    {{e.year.split('-')[0]}} : {{e.number_of_homeless}}
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
     </body>
 
     <script>
-        var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/forecast?zip=84062&appid=74afd8b2438530184bb3e4f0df71d1f1';
+        var utahHomeless = 'https://dashboard.slco.org/resource/asim-jj6s.json'
     </script>
 
     <script type="module"> import './mithril.js';</script>

@@ -1,18 +1,14 @@
 var component = {
-    list: [],
+    r : [],
     oninit: (vnode) => {
-        m.request(weatherApiUrl).then((r) => {
-            vnode.state.name = r.city.name;
-            vnode.state.list = r.list;
-        });
+        m.request(utahHomeless).then((r) => vnode.state.r = r);
     },
     view: (vnode) => [
         m('h1.subtitle', 'Mithril'),
-        m('', vnode.state.name),
-        vnode.state.list.map(
-            (e) => m('', e.dt_txt)
+        vnode.state.r.map(
+            (e) => m('', `${e.year.split('-')[0]} : ${e.number_of_homeless}`)
         )
     ]
 };
 
-m.render(document.getElementById('mithril'), m(component));
+m.mount(document.getElementById('mithril'), component);
