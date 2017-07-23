@@ -4,7 +4,7 @@ export default {
     view: vnode => m('div', [
         m('button', {
             onclick: _ => vnode.state.count++
-        }, vnode.attrs.name),
+        }, vnode.attrs.name || 'Count'),
         vnode.state.count
     ])
 };

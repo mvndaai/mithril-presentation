@@ -1,8 +1,9 @@
 // app.js
-import counter from './components/counter.js';
-m.mount(document.body, {
-    view: _ => [
-        m(counter, {name:'Counter 1'}),
-        m(counter, {name:'Counter 2'})
-    ]
+import Counter from './components/counter.js';
+import Request from './components/request.js';
+
+m.route(document.body, "/home", {
+    "/home": {view: _ => "Home" },
+    "/counter": Counter,
+    '/request': Request,
 });
